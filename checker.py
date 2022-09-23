@@ -38,7 +38,7 @@ def getStatuscode(url):
 # Url checks from file Input
 # use one url per line that should be checked
 
-with open(base_dir+'mn_bbb_urls_140 rows.csv', newline='') as f:
+with open(base_dir+'mn_bbb_urls_140rows.csv', newline='') as f:
 
     reader = csv.reader(f)
     for row in reader:
@@ -56,7 +56,7 @@ for i in range(1, len(url_list)):
         time.sleep(SLEEP)
         url_statuscodes.append(check)
     else:
-       bad= [bid_list[i], urlId_list[i], url_list[i]]
+        bad= [bid_list[i], urlId_list[i], url_list[i]]
 
         badSyntax.append(bad)
         with open("badSyntaxWrite.csv", "w", newline="") as f:
