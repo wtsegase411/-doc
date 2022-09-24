@@ -86,12 +86,11 @@ for i in range(1, len(url_list)):
             with open(base_dir + "urls_withStatusCodeGre499.csv", "w", newline="") as f4:
                 writer = csv.writer(f4)
                 writer.writerows(url_statuscodesGre400)
-
-   else:
+    else:
         bad = [bid_list[i], urlId_list[i], url_list[i]]
 
         badSyntax.append(bad)
-        with open("badSyntaxWrite.csv", "w", newline="") as f:
+        with open(base_dir + "badSyntaxWrite.csv", "w", newline="") as f:
             writer = csv.writer(f)
             writer.writerows(badSyntax)
 
