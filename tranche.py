@@ -8,7 +8,7 @@ import random
 base_dir = 'C:/Users/Wenge/Desktop/BBB/mn_bbb_urls.csv'
 
 pd_dataframe = pd.read_csv(base_dir, header=0)
-number_of_rows = 40 #len(pd_dataframe.index) + 1
+number_of_rows = 100 #len(pd_dataframe.index) + 1
 
 ## find number of lines using traditional python
 # fh = open(split_source_file, 'r')
@@ -26,7 +26,7 @@ file_increment = 1
 skip_rows = 1
 
 ## first file random numbers
-number_of_rows_perfile = 40 #random.randint(min_rows, max_rows)
+number_of_rows_perfile = 100 #random.randint(min_rows, max_rows)
 
 while True:
 
@@ -36,7 +36,7 @@ while True:
     df = pd.read_csv(base_dir, header=None, nrows = number_of_rows_perfile,skiprows = skip_rows)
 
     ## Target file name
-    split_target_file = f"{base_dir[:-4]}_{file_increment} 40 rows .csv"
+    split_target_file = f"{base_dir[:-4]}_{file_increment} 100 rows .csv"
 
     ## write to csv
     df.to_csv(split_target_file, index=False, header=False, mode='a', chunksize=number_of_rows_perfile)
