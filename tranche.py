@@ -1,20 +1,12 @@
 import pandas as pd
 import random
 
-## Provide file name with path for example: "C:\Users\xxxxx\flights.csv"
-#split_source_file = input("File Name with absolute Path? : ")
-
-## find number of lines using Pandas
+## Provide file name with path
 base_dir = 'C:/Users/Wenge/Desktop/BBB/mn_bbb_urls.csv'
 
 pd_dataframe = pd.read_csv(base_dir, header=0)
 number_of_rows = 100 #len(pd_dataframe.index) + 1
 
-## find number of lines using traditional python
-# fh = open(split_source_file, 'r')
-# for count, line in enumerate(fh):
-#     pass
-# py_number_of_rows = count
 
 print(f"{number_of_rows}")
 
