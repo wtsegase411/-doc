@@ -27,7 +27,7 @@ def checkSyntax(url):
 
 def getStatuscode(url):
     try:
-        r = requests.head(url, verify=False, timeout=5)  # it is faster to only request the header
+        r = requests.get(url, verify=False, timeout=5)  # it is faster to only request the header
         return (r.status_code)
 
     except:
@@ -37,7 +37,7 @@ def getStatuscode(url):
 # Url checks from file Input
 # use one url per line that should be checked
 
-with open(base_dir + 'mn_bbb_urls_140rows.csv', newline='') as f:
+with open(base_dir + 'mn_bbb_urls_1 100 rows .csv', newline='') as f:
     reader = csv.reader(f)
     for row in reader:
         bid_list.append(row[1])
