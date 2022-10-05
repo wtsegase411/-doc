@@ -15,7 +15,7 @@ url_statuscodes200 = [["bid","url_id","url","status_code"]]
 url_statuscodes400 = [["bid","url_id","url","status_code"]]
 url_statuscodesGre400 = [["bid","url_id","url","status_code"]]
 url_statuscodesNeg1 = [["bid","url_id","url","status_code"]]
-base_dir = 'C:/Users/Wenge/Desktop/BBB/'
+base_dir = 'C:/Users/Wen Sun/PycharmProjects/BBB/'
 
 def checkSyntax(url):
     url_pattern = "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
@@ -27,7 +27,7 @@ def checkSyntax(url):
 
 def getStatuscode(url):
     try:
-        r = requests.get(url, verify=False, timeout=5)  # it is faster to only request the header
+        r = requests.get(url, verify=False, timeout=5, headers={'Accept': '*/*','User-Agent': 'Mozilla/5.0'})  # it is faster to only request the header
         return (r.status_code)
 
     except:
