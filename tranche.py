@@ -2,7 +2,7 @@ import pandas as pd
 import random
 
 ## Provide file name with path
-base_dir = 'C:/Users/Wenge/Desktop/BBB/mn_bbb_urls.csv'
+base_dir = 'C:/Users/Medhanit Asrat/PycharmProjects/BBB/mn_bbb_urls.csv'
 
 pd_dataframe = pd.read_csv(base_dir, header=0)
 number_of_rows = 100 #len(pd_dataframe.index) + 1

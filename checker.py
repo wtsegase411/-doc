@@ -15,7 +15,7 @@ url_statuscodes200 = [["bid","url_id","url","status_code"]]
 url_statuscodes400 = [["bid","url_id","url","status_code"]]
 url_statuscodesGre400 = [["bid","url_id","url","status_code"]]
 url_statuscodesNeg1 = [["bid","url_id","url","status_code"]]
-base_dir = 'C:/Users/Wenge/Desktop/BBB/'
+base_dir = 'C:/Users/Medhanit Asrat/PycharmProjects/BBB/'
 
 def checkSyntax(url):
     url_pattern = "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
