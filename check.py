@@ -31,7 +31,7 @@ def check(url):
 
 def fixSyntax(url):
     url = url.lower()  # standardize to lowercase
-    if (re.match('[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]$') == None ):
+    if (re.match('[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]$', url) == None ):
         url=url[:-1]
 
     url = re.sub('[;,]|(:(?!//))', '.', url)  # change any [;:,] to . in URL
