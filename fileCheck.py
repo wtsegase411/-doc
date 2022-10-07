@@ -10,11 +10,11 @@ bid_list = []
 urlId_list = []
 url_list = []
 badSyntax = [["bid", "url_id", "url"]]
-url_statuscodes300 = [["bid", "url_id", "url", "status_code"]]  # set the file header for output\
-url_statuscodes200 = [["bid", "url_id", "url", "status_code"]]
-url_statuscodes400 = [["bid", "url_id", "url", "status_code"]]
-url_statuscodesGre400 = [["bid", "url_id", "url", "status_code"]]
-url_statuscodesNeg1 = [["bid", "url_id", "url", "status_code"]]
+# url_statuscodes300 = [["bid", "url_id", "url", "status_code"]]  # set the file header for output\
+# url_statuscodes200 = [["bid", "url_id", "url", "status_code"]]
+# url_statuscodes400 = [["bid", "url_id", "url", "status_code"]]
+# url_statuscodesGre400 = [["bid", "url_id", "url", "status_code"]]
+# url_statuscodesNeg1 = [["bid", "url_id", "url", "status_code"]]
 base_dir = 'C:/Users/Medhanit Asrat/PycharmProjects/BBB/'
 
 
@@ -43,12 +43,15 @@ def writeToFile(fileName):
         writer.writerows(fileName)
 
 
-for i in range(1, len(url_list)):
-    # print(url)
-    if checkSyntax(url_list[i]):
-        status_code = getStatuscode(url_list[i])
-        time.sleep(SLEEP)
-        if (status_code <= 399) and (status_code >= 300):
-            check = [bid_list[i], urlId_list[i], url_list[i], status_code]
-            url_statuscodes300.append(check)
-            writeToFile("urls_withStatusCode300.csv")
+writeToFile("urls_withStatusCode300.csv")
+
+#
+# for i in range(1, len(url_list)):
+#     # print(url)
+#     if checkSyntax(url_list[i]):
+#         status_code = getStatuscode(url_list[i])
+#         time.sleep(SLEEP)
+#         if (status_code <= 399) and (status_code >= 300):
+#             check = [bid_list[i], urlId_list[i], url_list[i], status_code]
+#             # url_statuscodes300.append(check)
+#             writeToFile("urls_withStatusCode300.csv")

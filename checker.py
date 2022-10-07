@@ -49,10 +49,10 @@ with open(base_dir + 'mn_bbb_urls_1 100 rows .csv', newline='') as f:
 
 
 # write to file
-def writeToFile(fileName):
+def writeToFile(fileName, rows):
     with open(base_dir + fileName, "w", newline="") as file:
         writer = csv.writer(file)
-        writer.writerows(fileName)
+        writer.writerows(rows)
 
 
 # Loop over full list
@@ -65,14 +65,14 @@ for i in range(1, len(url_list)):
         if (status_code <= 399) and (status_code >= 300):
             check = [bid_list[i], urlId_list[i], url_list[i], status_code]
             url_statuscodes300.append(check)
-            writeToFile("urls_withStatusCode300.csv")
+            writeToFile("urls_withStatusCode300.csv", url_statuscodes300)
             # writer = csv.writer(f)
             # writer.writerows(url_statuscodes300)
 
         elif (status_code <= 299) and (status_code >= 200):
             check = [bid_list[i], urlId_list[i], url_list[i], status_code]
             url_statuscodes200.append(check)
-            writeToFile("urls_withStatusCode200.csv")
+            writeToFile("urls_withStatusCode200.csv", url_statuscodes200)
             # with open(base_dir + "urls_withStatusCode200.csv", "w", newline="") as f1:
             #     writer = csv.writer(f1)
             #     writer.writerows(url_statuscodes200)
@@ -80,7 +80,7 @@ for i in range(1, len(url_list)):
         elif (status_code <= 499) and (status_code >= 400):
             check = [bid_list[i], urlId_list[i], url_list[i], status_code]
             url_statuscodes400.append(check)
-            writeToFile("urls_withStatusCode400.csv")
+            writeToFile("urls_withStatusCode400.csv", url_statuscodes400)
             # with open(base_dir + "urls_withStatusCode400.csv", "w", newline="") as f2:
             #     writer = csv.writer(f2)
             #     writer.writerows(url_statuscodes400)
@@ -88,7 +88,7 @@ for i in range(1, len(url_list)):
         elif status_code == -1:
             check = [bid_list[i], urlId_list[i], url_list[i], status_code]
             url_statuscodesNeg1.append(check)
-            writeToFile("urls_withStatusCodeNeg1.csv")
+            writeToFile("urls_withStatusCodeNeg1.csv", url_statuscodesNeg1)
             # with open(base_dir + "urls_withStatusCodeNeg1.csv", "w", newline="") as f3:
             #     writer = csv.writer(f3)
             #     writer.writerows(url_statuscodesNeg1)
@@ -96,15 +96,17 @@ for i in range(1, len(url_list)):
         elif status_code > 499:
             check = [bid_list[i], urlId_list[i], url_list[i], status_code]
             url_statuscodesGre400.append(check)
-            with open(base_dir + "urls_withStatusCodeGre499.csv", "w", newline="") as f4:
-                writer = csv.writer(f4)
-                writer.writerows(url_statuscodesGre400)
+            writeToFile("urls_withStatusCodeGre499.csv", url_statuscodesGre400)
+            # with open(base_dir + "urls_withStatusCodeGre499.csv", "w", newline="") as f4:
+            #     writer = csv.writer(f4)
+            #     writer.writerows(url_statuscodesGre400)
     else:
         bad = [bid_list[i], urlId_list[i], url_list[i]]
 
         badSyntax.append(bad)
-        with open(base_dir + "badSyntaxWrite.csv", "w", newline="") as f:
-            writer = csv.writer(f)
-            writer.writerows(badSyntax)
+        writeToFile("badSyntaxWrite.csv", badSyntax)
+        # with open(base_dir + "badSyntaxWrite.csv", "w", newline="") as f:
+        #     writer = csv.writer(f)
+        #     writer.writerows(badSyntax)
 
 # Save file
