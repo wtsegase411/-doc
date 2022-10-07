@@ -1,26 +1,14 @@
 import re
 from urllib.parse import urlparse
 
-import requests
-
-# print('hello world')
-# print('contacting google.com...')
-# r = requests.head("https://www.youtube.com/non-exist-url")
-# print("status code:", r.status_code)
-# url = 'https://www.youtube.com/non-exist-url'
-# request = requests.get(url)
-# print(request.status_code)
-from pyparsing import Regex
-
-url = "https://wwwfacebook,com/search/top/?q=king%20milan%20barber%20shop#"
+url = "https://wwwgreenwoodnurserymncom;"
+print(url)
 
 
 def check(url):
+    url = fix(url)
     regex = "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
 
-    #regex = "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
-    # url_pattern = "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
-    # url_pattern1 = "^[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
     if re.match(regex, url) is None:
         # print('False')
         return False
@@ -28,28 +16,34 @@ def check(url):
         # print('True')
         return True
 
+def fix(url):
 
-def fixSyntax(url):
-    url = url.lower()  # standardize to lowercase
-    if (re.match('[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]$', url) == None ):
-        url=url[:-1]
+    if re.match('[-a-zA-Z0-9()@:%_+.~#?&/=]$', url[-1]) is None:  # get rid of special characters at the end of URL's
+        url = url[:-1]
 
     url = re.sub('[;,]|(:(?!//))', '.', url)  # change any [;:,] to . in URL
-    #url = re.Replace(url, "(?m)(?<=^.{len(url)-2})-"," ")
+
     domain = urlparse(url).netloc
+
+    if domain[0] == 'w' and domain[1] == 'w' and domain[2] == 'w' and domain[3] != '.':
+        domain = re.sub('www', 'www.', domain)
+
     domain = re.sub('(?<!\.)((?=com$)|(?=net$)|(?=org$)|(?=edu$)|(?=gov$))', '.', domain)
-    #domain = re.sub('\.om$', '.com', domain)  # replace .om with .com (if at the end)
+    # domain = re.sub('\.om$', '.com', domain)  # replace .om with .com (if at the end)
 
     if (urlparse(url).scheme):
-        url = urlparse(url).scheme +"://"+ domain + urlparse(url).path + urlparse(url).params + urlparse(url).query + urlparse(url).fragment
+        url = urlparse(url).scheme + "://" + domain + urlparse(url).path + urlparse(url).params + urlparse(
+            url).query + urlparse(url).fragment
     else:
         url = domain + urlparse(url).path + urlparse(url).params + urlparse(url).query + urlparse(url).fragment
 
     print(url)
-    print(domain)
+    return url
 
 
 if check(url):
+
     print("clean URl")
+
 else:
-    fixSyntax(url)
+    print("not clean")
