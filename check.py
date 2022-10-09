@@ -1,7 +1,7 @@
 import re
 from urllib.parse import urlparse
 
-url = "http://google,com"
+url = "http//google.com"
 #print(url)
 
 

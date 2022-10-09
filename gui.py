@@ -12,8 +12,11 @@ def Take_input():
         Output.insert(END, 'Valid URL')
     else:
         Output.insert(END, "Syntax for the given URL was incorrect\n")
-        Output.insert(END, "Suggested URL:\n")
-        Output.insert(END, check.fix(INPUT))
+        if (check.fix(INPUT)!=INPUT):
+            Output.insert(END, "Suggested URL:\n")
+            Output.insert(END, check.fix(INPUT))
+        else:
+            Output.insert(END, 'Unable to fix URL')
 
 def clearToTextInput():
     inputtxt.delete('1.0','end')
