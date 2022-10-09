@@ -12,7 +12,7 @@ def Take_input():
         Output.insert(END, 'Correct syntax')
     else:
         Output.insert(END, "Wrong syntax\n")
-        Output.insert(END, check.fixSyntax(INPUT))
+        Output.insert(END, check.fix(INPUT))
 
 def clearToTextInput():
     inputtxt.delete('1.0','end')

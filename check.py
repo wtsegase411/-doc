@@ -1,15 +1,17 @@
 import re
 from urllib.parse import urlparse
 
-url = "https://wwwgreenwoodnurserymncom+"
-print(url)
+url = "www.google.com"
+#print(url)
+
 
 
 def check(url):
-    url = fix(url)
-    regex = "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
 
-    if re.match(regex, url) is None:
+
+    regex = "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
+    regex1 = "^[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
+    if re.match(regex, url) is None and re.match(regex1, url) is None:
         # print('False')
         return False
     else:
@@ -24,9 +26,9 @@ def fix(url):
     url = re.sub('[;,]|(:(?!//))', '.', url)  # change any [;:,] to . in URL
 
     domain = urlparse(url).netloc
-
-    if domain[0] == 'w' and domain[1] == 'w' and domain[2] == 'w' and domain[3] != '.':
-        domain = re.sub('www', 'www.', domain)
+    if (len(domain)>=4):
+        if domain[0] == 'w' and domain[1] == 'w' and domain[2] == 'w' and domain[3] != '.':
+            domain = re.sub('www', 'www.', domain)
 
     domain = re.sub('(?<!\.)((?=com$)|(?=net$)|(?=org$)|(?=edu$)|(?=gov$))', '.', domain)
     # domain = re.sub('\.om$', '.com', domain)  # replace .om with .com (if at the end)
@@ -37,13 +39,19 @@ def fix(url):
     else:
         url = domain + urlparse(url).path + urlparse(url).params + urlparse(url).query + urlparse(url).fragment
 
-    print(url)
+    #print(url)
     return url
 
 
 if check(url):
-
     print("clean URl")
-
 else:
-    print("not clean")
+    print("Incorrect Syntax")
+    fixedUrl = fix(url)
+    if check(fixedUrl):
+        print("URL was fixed to: ")
+        print(fixedUrl)
+    else:
+        print("Unable to fix URL")
+
+
