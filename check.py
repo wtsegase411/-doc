@@ -1,7 +1,7 @@
 import re
 from urllib.parse import urlparse
 
-url = "www.google.com"
+url = "http://google,com"
 #print(url)
 
 
@@ -10,8 +10,8 @@ def check(url):
 
 
     regex = "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
-    regex1 = "^[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
-    if re.match(regex, url) is None and re.match(regex1, url) is None:
+
+    if re.match(regex, url) is None:
         # print('False')
         return False
     else:
@@ -26,6 +26,7 @@ def fix(url):
     url = re.sub('[;,]|(:(?!//))', '.', url)  # change any [;:,] to . in URL
 
     domain = urlparse(url).netloc
+
     if (len(domain)>=4):
         if domain[0] == 'w' and domain[1] == 'w' and domain[2] == 'w' and domain[3] != '.':
             domain = re.sub('www', 'www.', domain)
@@ -46,10 +47,10 @@ def fix(url):
 if check(url):
     print("clean URl")
 else:
-    print("Incorrect Syntax")
+    print("Syntax for the given URL was incorrect")
     fixedUrl = fix(url)
     if check(fixedUrl):
-        print("URL was fixed to: ")
+        print("Suggested URL: ")
         print(fixedUrl)
     else:
         print("Unable to fix URL")
