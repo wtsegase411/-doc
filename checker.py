@@ -27,7 +27,9 @@ def checkSyntax(url):
     url_pattern1 = "^[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
 
     if re.match(url_pattern, url) is None and re.match(url_pattern1, url) is None:
-        url = fix(url)
+        urlfix = fix(url)
+
+
         return False
     else:
         return True
@@ -36,7 +38,7 @@ def checkSyntax(url):
 
 def fix(url):
 
-    if re.match('[-a-zA-Z0-9()@:%_+.~#?&/=]$', url[-1]) is None:  # get rid of special characters at the end of URL's
+    if re.match('[-a-zA-Z0-9]$', url[-1]) is None:  # get rid of special characters at the end of URL's
         url = url[:-1]
 
     url = re.sub('[;,]|(:(?!//))', '.', url)  # change any [;:,] to . in URL

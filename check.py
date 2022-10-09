@@ -1,7 +1,7 @@
 import re
 from urllib.parse import urlparse
 
-url = "https://wwwgreenwoodnurserymncom;"
+url = "https://wwwgreenwoodnurserymncom+"
 print(url)
 
 
@@ -18,7 +18,7 @@ def check(url):
 
 def fix(url):
 
-    if re.match('[-a-zA-Z0-9()@:%_+.~#?&/=]$', url[-1]) is None:  # get rid of special characters at the end of URL's
+    if re.match('[-a-zA-Z0-9]$', url[-1]) is None:  # get rid of special characters at the end of URL's
         url = url[:-1]
 
     url = re.sub('[;,]|(:(?!//))', '.', url)  # change any [;:,] to . in URL
