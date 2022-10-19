@@ -33,7 +33,7 @@ Output = Text(root, height=8,
 
 Display = Button(root, height=2,
                  width=15,
-                 text="Result",
+                 text="Check",
                  command=lambda: Take_input())
 Clear = Button(root, height=2,
                width=15,
