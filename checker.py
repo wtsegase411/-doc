@@ -9,8 +9,10 @@ SLEEP = 0  # Time in seconds the script should wait between requests
 bid_list = []
 urlId_list = []
 url_list = []
+
+# set the file header for output
 badSyntax = [["bid", "url_id", "url"]]
-url_statuscodes300 = [["bid", "url_id", "url", "status_code"]]  # set the file header for output\
+url_statuscodes300 = [["bid", "url_id", "url", "status_code"]]
 url_statuscodes200 = [["bid", "url_id", "url", "status_code"]]
 url_statuscodes400 = [["bid", "url_id", "url", "status_code"]]
 url_statuscodesGre400 = [["bid", "url_id", "url", "status_code"]]
@@ -26,19 +28,16 @@ def checkSyntax(url):
     else:
         return True
 
-
 def getStatuscode(url):
     try:
         r = requests.get(url, verify=False, timeout=5)  # it is faster to only request the header
         return r.status_code
-
     except:
         return -1
 
 
 # Url checks from file Input
 # use one url per line that should be checked
-
 with open(base_dir + 'mn_bbb_urls_1 100 rows .csv', newline='') as f:
     reader = csv.reader(f)
     for row in reader:
