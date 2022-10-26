@@ -60,7 +60,7 @@ def fix(url):
 # Returns the status code that's associated with the given url
 def getStatuscode(url):
     try:
-        r = requests.get(url, verify=False, timeout=5)
+        r = requests.get(url, verify=True, timeout=5)
         return (r.status_code)
 
     except:
