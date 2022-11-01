@@ -20,6 +20,7 @@ url_statuscodesNeg1 = [["bid", "url_id", "url", "status_code"]]
 base_dir = 'C:/Users/Wenge/Desktop/BBB/'
 
 
+
 # Checks if the syntax of the url in the database matches the general url syntax for url.
 # Checks for urls that start with http and also for those that don't
 def checkSyntax(url):
@@ -59,8 +60,11 @@ def fix(url):
 
 # Returns the status code that's associated with the given url
 def getStatuscode(url):
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
+    }
     try:
-        r = requests.get(url, verify=True, timeout=5)
+        r = requests.get(url, verify=False, timeout=5, headers= headers)
         return (r.status_code)
 
     except:
@@ -68,8 +72,9 @@ def getStatuscode(url):
 
 
 # reads for sample data
-with open(base_dir + 'mn_bbb_urls_1 100 rows .csv', newline='') as f:
-    reader = csv.reader(f)
+
+
+def readFile(reader,bid_list,urlId_list,url_list ):
     for row in reader:
         bid_list.append(row[1])
         urlId_list.append(row[2])

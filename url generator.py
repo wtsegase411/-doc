@@ -5,14 +5,15 @@ from googlesearch import search
 import time
 
 companyName = "Lewk"
-companyName = companyName.lower()
-address = "945 Broadway ST NE #160"
-State = "MN"
-city = "Minneapolis"
-email = "hr@lewk.com"
 
 
-def getURL(companyName,email, address, city, State):
+# address = "775 40th Ave"
+# State = "MN"
+# city = "Beaver Creek"
+# email = "midwestcanine@earthlink.net"
+
+
+def getURL(companyName):
 
     """
     Return company's URL given company name and state
@@ -26,17 +27,20 @@ def getURL(companyName,email, address, city, State):
 
         # term = "Lewk hr@lewk.com 945 Broadway ST NE #160 Minneapolis MN"
 
-        term = ' '.join([companyName,email, address, city, State])
+        term = ' '.join([companyName])
 
-        for j in search(term, tld="co.in", num=10, stop=10, pause=2):
+        for j in search(term, num=20, stop=20, pause=2):
             print(j)
-            if pickUrl(j):
+            if pickUrl(companyName,j):
                 return j
 
     except:
         return ''
 
-def pickUrl(url):
+def pickUrl(companyName,url):
+    companyName = companyName.split(',')[0]
+    companyName = companyName.lower()
+    companyName = companyName.replace(" ", "")
     sub = tldextract.extract(url)
     print("Subdomain ", sub.domain)
     if companyName == sub.domain.lower():
@@ -44,4 +48,4 @@ def pickUrl(url):
     else:
         return False
 
-print("correct Url:-->", getURL(companyName,email, address, city, State))
+print("correct Url:-->", getURL(companyName))

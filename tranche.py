@@ -2,23 +2,23 @@ import pandas as pd
 import random
 
 ## Provide file name with path
-base_dir = 'C:/Users/Medhanit Asrat/PycharmProjects/BBB/mn_bbb_urls.csv'
+base_dir = 'C:/Users/Wenge/Desktop/BBB/mn_bbb_urls.csv'
 
 pd_dataframe = pd.read_csv(base_dir, header=0)
-number_of_rows = 100 #len(pd_dataframe.index) + 1
+number_of_rows = 10000 #len(pd_dataframe.index) + 1
 
 
 print(f"{number_of_rows}")
 
 ## Incase of equal split, provide the same number for min and max
 min_rows = 1
-max_rows = 41
+max_rows = 10001
 
 file_increment = 1
 skip_rows = 1
 
 ## first file random numbers
-number_of_rows_perfile = 100 #random.randint(min_rows, max_rows)
+number_of_rows_perfile = 10000 #random.randint(min_rows, max_rows)
 
 while True:
 
