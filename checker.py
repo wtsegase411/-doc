@@ -17,7 +17,7 @@ url_statuscodes400 = [["bid", "url_id", "url", "status_code"]]
 url_statuscodesGre400 = [["bid", "url_id", "url", "status_code"]]
 url_statuscodesNeg1 = [["bid", "url_id", "url", "status_code"]]
 
-base_dir = 'C:/Users/Wenge/Desktop/BBB/'
+base_dir = 'C:/Users/Medhanit Asrat/PycharmProjects/BBB/'
 
 
 # Checks if the syntax of the url in the database matches the general url syntax for url.
@@ -68,7 +68,7 @@ def getStatuscode(url):
 
 
 # reads for sample data
-with open(base_dir + 'mn_bbb_urls_1 100 rows .csv', newline='') as f:
+with open(base_dir + 'mn_bbb_urls_1 250 rows .csv', newline='') as f:
     reader = csv.reader(f)
     for row in reader:
         bid_list.append(row[1])

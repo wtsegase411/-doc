@@ -26,7 +26,7 @@ def getURL(companyName,email, address, city, State):
 
         # term = "Lewk hr@lewk.com 945 Broadway ST NE #160 Minneapolis MN"
 
-        term = ' '.join([companyName,email, address, city, State])
+        term = ' '.join([companyName, email, address, city, State])
 
         for j in search(term, tld="co.in", num=10, stop=10, pause=2):
             print(j)
