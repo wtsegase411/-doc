@@ -5,6 +5,15 @@ import time
 
 
 def opener(base_dir, fileName, bid_list, urlId_list, url_list):  # 'mn_bbb_urls_1 100 rows .csv'
+    """
+
+    :param base_dir:
+    :param fileName:
+    :param bid_list:
+    :param urlId_list:
+    :param url_list:
+    :return:
+    """
     with open(base_dir + fileName, newline='') as f:
         reader = csv.reader(f)
         for row in reader:
@@ -14,6 +23,13 @@ def opener(base_dir, fileName, bid_list, urlId_list, url_list):  # 'mn_bbb_urls_
 
 
 def write(base_dir, filename, lst):
+    """
+
+    :param base_dir:
+    :param filename:
+    :param lst:
+    :return:
+    """
     with open(base_dir + filename, "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerows(lst)

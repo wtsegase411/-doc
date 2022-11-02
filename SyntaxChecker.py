@@ -3,6 +3,11 @@ from urllib.parse import urlparse
 
 
 def check_syntax(url):
+    """
+
+    :param url:
+    :return:
+    """
     url_pattern = "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
     url_pattern1 = "^[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
 
@@ -13,6 +18,11 @@ def check_syntax(url):
 
 
 def fix(url):
+    """
+
+    :param url:
+    :return:
+    """
     if re.match('[-a-zA-Z0-9]$', url[-1]) is None:  # get rid of special characters at the end of URL's
         url = url[:-1]
 
@@ -35,6 +45,11 @@ def fix(url):
 
 
 def verify(url):
+    """
+
+    :param url:
+    :return:
+    """
     if check_syntax(url):
         return True, url
     else:
