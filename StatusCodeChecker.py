@@ -5,12 +5,15 @@ import requests
 
 def get_statuscode(lst):
     """
-    :param lst:
+    Gets the status code of the list of urls using threading.
+    It sends a maximum of 70 (requests) threads at a time to maximize speed.
+    :param lst: list of urls
     :return: a list of status codes
     """
     executor = ThreadPoolExecutor(max_workers=70)
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                      'Chrome/74.0.3729.169 Safari/537.36 '
     }
     timeout = 5
     results = []
@@ -22,10 +25,12 @@ def get_statuscode(lst):
 
 def status_code(url, headers, timeout):
     """
-    :param url:
-    :param headers:
-    :param timeout:
-    :return: status code of the url if its valid, if not returns -1
+    Gets a single url and returns the status code
+    :param url: a single url
+    :param headers: a dictionary that contains user agent strings.
+    User agent string is contained in the HTTP headers and is intended to identify devices requesting online content.
+    :param timeout: limits the maximum time for calling a function
+    :return: status code of the url if it receives a response within the given time, if not returns -1
     """
     try:
         r = requests.get(url, verify=True, timeout=timeout, headers=headers)
