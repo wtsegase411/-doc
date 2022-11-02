@@ -4,6 +4,10 @@ import requests
 
 
 def get_statuscode(lst):
+    """
+    :param lst:
+    :return: a list of status codes
+    """
     executor = ThreadPoolExecutor(max_workers=70)
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
@@ -17,9 +21,14 @@ def get_statuscode(lst):
 
 
 def status_code(url, headers, timeout):
+    """
+    :param url:
+    :param headers:
+    :param timeout:
+    :return: status code of the url if its valid, if not returns -1
+    """
     try:
         r = requests.get(url, verify=True, timeout=timeout, headers=headers)
         return r.status_code
-
     except:
         return -1
