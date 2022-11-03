@@ -1,4 +1,4 @@
-from concurrent.futures import ThreadPoolExecutor
+import ThreadPoolExecutorPlus
 from itertools import repeat
 import requests
 
@@ -10,7 +10,7 @@ def get_statuscode(lst):
     :param lst: list of urls
     :return: a list of status codes
     """
-    executor = ThreadPoolExecutor(max_workers=70)
+    executor = ThreadPoolExecutorPlus.ThreadPoolExecutor(max_workers=70)
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                       'Chrome/74.0.3729.169 Safari/537.36 '
